@@ -88,6 +88,8 @@ _IWYU_PATHS = [
     '../../../../../build/Debug+Asserts/bin',
     '../../../../../build/Release+Asserts/bin',
     '../../../../../build/Release/bin',
+    '../../../../../build/Debug/bin',
+    '../build/Debug/bin',
     # Windows default out-of-tree paths.
     '../../../../../build/bin/Debug',
     '../../../../../build/bin/Release',
