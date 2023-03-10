@@ -2397,9 +2397,11 @@ class IwyuBaseAstVisitor : public BaseAstVisitor<Derived> {
         // contents don't matter that much.
         using clang::Optional;
         using clang::FileEntryRef;
+        using clang::DirectoryLookup;
+        const DirectoryLookup* curdir = nullptr;
         const FileEntry* use_file = CurrentFileEntry();
         Optional<FileEntryRef> file = compiler()->getPreprocessor().LookupFile(
-            CurrentLoc(), "new", true, nullptr, use_file, nullptr, nullptr,
+            CurrentLoc(), "new", true, nullptr, use_file, curdir, nullptr,
             nullptr, nullptr, nullptr, nullptr, false);
         if (file) {
           preprocessor_info().FileInfoFor(use_file)->ReportFullSymbolUse(
@@ -4074,6 +4076,7 @@ class IwyuAstConsumer
     return Base::VisitTypedefType(type);
   }
 
+        /*
   bool VisitUsingType(clang::UsingType* type) {
     if (CanIgnoreCurrentASTNode())
       return true;
@@ -4087,6 +4090,7 @@ class IwyuAstConsumer
 
     return Base::VisitUsingType(type);
   }
+         */
 
   // This is a superclass of RecordType and CXXRecordType.
   bool VisitTagType(clang::TagType* type) {
